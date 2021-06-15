@@ -1,0 +1,7 @@
+C:\Users\Lenovo\source\repos\BooksDb\bin\Debug\BooksDb.exe.config
+C:\Users\Lenovo\source\repos\BooksDb\bin\Debug\BooksDb.exe
+C:\Users\Lenovo\source\repos\BooksDb\bin\Debug\BooksDb.pdb
+C:\Users\Lenovo\source\repos\BooksDb\obj\Debug\BooksDb.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\BooksDb\obj\Debug\BooksDb.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\BooksDb\obj\Debug\BooksDb.exe
+C:\Users\Lenovo\source\repos\BooksDb\obj\Debug\BooksDb.pdb
