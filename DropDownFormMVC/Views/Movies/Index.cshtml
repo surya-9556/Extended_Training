@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<h2>Index</h2>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>Technique</td>
+                <td>Data</td>
+            </tr>
+            <tr>
+                <td>HardCoded Data</td>
+                <td>
+                    @Html.DropDownList("MovieList", new List<SelectListItem>{
+                   new SelectListItem{Text="Roman Holiday",Value="1"},
+                   new SelectListItem{Text="1917",Value="2"},
+                   new SelectListItem{Text="Memoreis",Value="3"},
+                   new SelectListItem{Text="Jojo rabbit",Value="4"},
+                   new SelectListItem{Text="The dark knight",Value="5"},
+                   new SelectListItem{Text="Tenet",Value="6"},
+                   new SelectListItem{Text="Drunkik",Value="7"}
+                   })
+                </td>
+            </tr>
+            <tr>
+                <td>ViewBag Data</td>
+                <td>@Html.DropDownList("MovieList", (IEnumerable<SelectListItem>)ViewBag.MovList)</td>
+            </tr>
+
+            <tr>
+                <td>ViewData movies</td>
+                <td>@Html.DropDownList("MovieList", (IEnumerable<SelectListItem>)ViewData["MvdList"])</td>
+            </tr>
+
+            <tr>
+                <td>TempData movies</td>
+                <td>@Html.DropDownList("MovieList",(IEnumerable<SelectListItem>)TempData["MtdList"])</td>
+            </tr>
+
+            <tr>
+                <td>Enum data</td>
+                <td>@Html.DropDownList("MovieList",new SelectList(ViewBag.ENumMovlist,"Value","Text"))</td>
+            </tr>
+        </table>
+    </div>
+</body>

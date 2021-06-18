@@ -1,0 +1,26 @@
+﻿@model IEnumerable<EFWithDropDown.Models.tbl_Movies>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Linq</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr> Movies Name</tr>
+            @foreach (var item in Model)
+            {
+                <td>
+                    @Html.DisplayFor(ModelItem => item.MovieName),
+                </td>
+            }
+        </table>
+    </div>
+</body>
+</html>

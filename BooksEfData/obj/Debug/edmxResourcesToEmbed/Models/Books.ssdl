@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_author">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthorName" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbl_Book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookTitle" Type="varchar" MaxLength="100" />
+    <Property Name="AuthorId" Type="int" />
+    <Property Name="BookPrice" Type="money" />
+  </EntityType>
+  <Association Name="Fk_Auth">
+    <End Role="tbl_author" Type="Self.tbl_author" Multiplicity="0..1" />
+    <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_author">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="tbl_Book">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookDBModelStoreContainer">
+    <EntitySet Name="tbl_author" EntityType="Self.tbl_author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Fk_Auth" Association="Self.Fk_Auth">
+      <End Role="tbl_author" EntitySet="tbl_author" />
+      <End Role="tbl_Book" EntitySet="tbl_Book" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

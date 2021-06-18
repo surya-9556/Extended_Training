@@ -1,0 +1,57 @@
+﻿@using System.Data
+@model System.Data.DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <div> 
+        <form method="post" name="Display">
+            <h2> Home </h2>
+            @Html.ActionLink("Add new Book", "Insert")
+            @{ 
+                if(Model.Rows.Count>0)
+                {
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Book Id
+                                    </th>
+                                    <th>
+                                        Title of book
+                                    </th>
+                                    <th>
+                                        Author Name
+                                    </th>
+                                    <th>
+                                        Price
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach (DataRow dr in Model.Rows)
+                            {
+                        <tr>
+                            <td>@dr["BookId"].ToString()</td>
+                            <td>@dr["BookTitle"].ToString()</td>
+                            <td>@dr["AuthorName"].ToString()</td>
+                            <td>@dr["BookPrice"].ToString()</td>
+                            <td>@Html.ActionLink("Edit", "EditBook", new { BookId = dr["BookId"].ToString() })</td>
+                            <td>@Html.ActionLink("Delete", "Delete", new { BookId = dr["BookId"].ToString() })</td>
+                            <td>@Html.ActionLink("Details", "Details", new { BookId = dr["BookId"].ToString() })</td>
+                        </tr>
+                            }
+                        </table>
+                }
+            }
+        </form>
+    </div>
+</body>
+</html>

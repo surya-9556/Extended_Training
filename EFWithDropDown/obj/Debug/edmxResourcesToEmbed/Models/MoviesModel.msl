@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbMovisModelStoreContainer" CdmEntityContainer="MovisEntities">
+    <EntitySetMapping Name="tbl_Movies">
+      <EntityTypeMapping TypeName="DbMovisModel.tbl_Movies">
+        <MappingFragment StoreEntitySet="tbl_Movies">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="MovieName" ColumnName="MovieName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

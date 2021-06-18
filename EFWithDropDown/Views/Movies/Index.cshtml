@@ -1,0 +1,9 @@
+﻿
+@{
+    Layout = null;
+}
+
+<body>
+    <h2>Movies List</h2>
+    @Html.DropDownList("Movies", (IEnumerable<SelectListItem>)TempData["MovEF"])
+</body>

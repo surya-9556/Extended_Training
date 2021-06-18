@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_author">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_Book" Relationship="Self.Fk_Auth" FromRole="tbl_author" ToRole="tbl_Book" />
+  </EntityType>
+  <EntityType Name="tbl_Book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AuthorId" Type="Int32" />
+    <Property Name="BookPrice" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="tbl_author" Relationship="Self.Fk_Auth" FromRole="tbl_Book" ToRole="tbl_author" />
+  </EntityType>
+  <Association Name="Fk_Auth">
+    <End Role="tbl_author" Type="Self.tbl_author" Multiplicity="0..1" />
+    <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_author">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="tbl_Book">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BooksEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_author" EntityType="Self.tbl_author" />
+    <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" />
+    <AssociationSet Name="Fk_Auth" Association="Self.Fk_Auth">
+      <End Role="tbl_author" EntitySet="tbl_author" />
+      <End Role="tbl_Book" EntitySet="tbl_Book" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

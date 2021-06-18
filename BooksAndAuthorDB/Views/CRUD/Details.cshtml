@@ -1,0 +1,39 @@
+﻿@using System.Data
+@model System.Data.DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div> 
+        <form method="post" name="BooksDetails">
+            <h2>Details of book</h2>
+            @if (Model.Rows.Count > 0)
+            {
+                <table border="0">
+                    @foreach (DataRow dr in Model.Rows)
+                    {
+                        <tr>
+                            <td>Book Name: @dr["BookTitle"].ToString()</td>
+                        </tr>
+                        <tr>
+                            <td>Author Id: @dr["AuthorName"].ToString()</td>
+                        </tr>
+                        <tr>
+                            <td>Book Price: @dr["BookPrice"].ToString()</td>
+                        </tr>
+                    }
+                </table>
+            }
+        </form>
+    </div>
+    @Html.ActionLink("Back to list","Index")
+</body>
+</html>

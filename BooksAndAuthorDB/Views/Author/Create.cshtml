@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <div> 
+        <form method="post" action="@Url.Action("insertRecord")">
+            Enter the author name: <input name="txtName" />
+            <br />
+            <input type="submit" value="Submit" name="action"/>
+            <input type="submit" value="Cancel" name="action" />
+        </form>
+    </div>
+</body>
+</html>
