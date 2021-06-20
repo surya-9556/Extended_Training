@@ -1,0 +1,43 @@
+﻿@model Products.Models.ProductView
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="container">
+    <div class="form-group">
+        @if (ViewBag.Productlist != null)
+        {
+            @Html.DropDownListFor(Model => Model.ProductCategoryId, ViewBag.Productlist as SelectList, "--Select product--", new { @class = "form-control" })
+        }
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(Model => Model.ProductSubCategoryId, new SelectList(" "), "--Select product--", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(Model => Model.ProductId, new SelectList(" "), "--Select product--", new { @class = "form-control" })
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#ProductCategoryId").change(function () {
+            $.get("/Product/GetProducts", { ProductCategoryId: $("#ProductCategoryId").val() }, function (data) {
+                $("#ProductSubCategoryId").empty()
+                $.each(data, function (index, row) {
+                    $("#ProductSubCategoryId").append("<option value='" + row.ProductSubcategoryID + "'>" + row.Name +"</option>")
+                })
+            })
+        })
+
+        $("#ProductSubCategoryId").change(function () {
+            $.get("/Product/GetProduct", { ProductSubCategoryId: $("#ProductSubCategoryId").val() }, function (data) {
+                $("#ProductId").empty()
+                $.each(data, function (index, row) {
+                    $("#ProductId").append("<option value='" + row.ProductID + "'>" + row.Name + "</option>")
+                })
+            })
+        })
+    })
+</script>
