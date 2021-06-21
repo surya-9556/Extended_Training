@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                event.preventDefault();
+                $("div").text($("form").serialize())
+            })
+        })
+    </script>
+</head>
+<body>
+    <form action="">
+        Place of Insert:<input type="text" name="PoI" value="" /><br />
+        City / Country:<input type="text" name="City" value=""/><br />
+        <button>Seralize</button>
+    </form>
+    <div></div>
+</body>
+</html>
